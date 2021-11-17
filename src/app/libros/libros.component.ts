@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { LibrosService } from '../services/libros.services';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-libros',
@@ -6,13 +8,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./libros.component.css'],
 })
 export class LibrosComponent implements OnInit {
-  libros = ['Harry Potter', 'El señor de los anillos', 'El quijote'];
 
-  constructor() {}
+  libros = [];
+  constructor(private librosService:LibrosService) {}
 
-  ngOnInit(): void {}
+  private libroSubscricion: Subscription | undefined;
+
+  ngOnInit(): void {
+    this.libros = this.librosService.getLibros();
+    this.libroSubscricion = this.librosService.librosSubject.subscribe(()=>{
+      this.libros = this.librosService.getLibros();
+    })
+  }
 
   deleteBook(libro: string){
-    this.libros = this.libros.filter(p=>p !== libro)
+
   }
+
+  guardarLibro(form:any){
+    if(form.valid){
+      this.librosService.addLibros(form.value.nombreLibro)
+    }
+  }
+
+  ngOnDestroy(){
+    this.libroSubscricion.unsubscribe()
+  }
+
 }

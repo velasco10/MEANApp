@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
+import { LibrosService } from '../services/libros.services';
 
 @Component({
   selector: 'app-libro',
@@ -8,12 +9,15 @@ import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 export class LibroComponent implements OnInit {
   @Input() tituloLibro: string | undefined;
 
-  constructor() {}
+  constructor(private LibrosService : LibrosService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   @Output() libroClicked = new EventEmitter();
   onClicked() {
-    this.libroClicked.emit();
+    // this.libroClicked.emit();
+    this.LibrosService.deleteLibro(this.tituloLibro)
   }
 }

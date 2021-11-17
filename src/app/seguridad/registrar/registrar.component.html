@@ -1,0 +1,81 @@
+<section>
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    #form="ngForm"
+    (ngSubmit)="registrarUsuario(form)"
+    fxLayoutGap="10px"
+  >
+    <mat-form-field>
+      <mat-label>Ingrese Nombre</mat-label>
+      <input
+        type="text"
+        ngModel
+        name="nombre"
+        required
+        placeholder="Ingrese Nombre"
+        matInput
+      />
+      <mat-error>Ingrese un nombre</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Ingrese Apellido</mat-label>
+      <input
+        type="text"
+        ngModel
+        name="apellido"
+        required
+        placeholder="Ingrese Apellido"
+        matInput
+      />
+      <mat-error>Ingrese un Apellido</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Ingrese username</mat-label>
+      <input
+        type="text"
+        ngModel
+        name="username"
+        required
+        placeholder="dvelascop"
+        matInput
+      />
+      <mat-error>Ingrese un username</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Ingrese e-mail</mat-label>
+      <input
+        type="email"
+        matInput
+        placeholder="velascoperezd@gmail.com"
+        ngModel
+        name="email"
+        email
+        required
+        #emailInput="ngModel"
+      />
+      <mat-error *ngIf="emailInput.hasError('required')"
+        >El email no puede estar en blanco</mat-error
+      >
+      <mat-error *ngIf="emailInput.hasError('email')"
+        >El email no contiene formato correcto</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field hintLabel="El password debe tener 7 caracteres">
+      <mat-label>Ingrese Password</mat-label>
+      <input
+        type="password"
+        matInput
+        placeholder="Ingrese Password"
+        ngModel
+        name="password"
+        required
+        minlength="7"
+        #passwordInput="ngModel"
+      />
+      <mat-error>El password debe tener 7 caracteres</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" [disabled]="form.invalid">Guardar</button>
+  </form>
+</section>
