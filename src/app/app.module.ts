@@ -13,9 +13,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { RegistrarComponent } from './seguridad/registrar/registrar.component';
 import { LoginComponent } from './seguridad/login/login.component';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { BarraComponent } from './navegacion/barra/barra.component';
 import { MenuListaComponent } from './navegacion/menu-lista/menu-lista.component';
+import { SeguridadService } from './seguridad/seguridad.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { MenuListaComponent } from './navegacion/menu-lista/menu-lista.component
     RegistrarComponent,
     LoginComponent,
     BarraComponent,
-    MenuListaComponent
+    MenuListaComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,9 +36,9 @@ import { MenuListaComponent } from './navegacion/menu-lista/menu-lista.component
     FormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
   ],
-  providers: [LibrosService],
-  bootstrap: [AppComponent]
+  providers: [LibrosService, SeguridadService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
