@@ -17,6 +17,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BarraComponent } from './navegacion/barra/barra.component';
 import { MenuListaComponent } from './navegacion/menu-lista/menu-lista.component';
 import { SeguridadService } from './seguridad/seguridad.service';
+import { BooksComponent } from './books/books.component';
+import { BooksService } from './books/books.service';
+import { NewBookComponent } from './new-book/new-book.component';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { AutoresComponent } from './autores/autores.component';
+import { AutoresService } from './autores/autores.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SeguridadInterceptor } from './seguridad/seguridad-interceptor';
 
 @NgModule({
   declarations: [
@@ -29,6 +37,9 @@ import { SeguridadService } from './seguridad/seguridad.service';
     LoginComponent,
     BarraComponent,
     MenuListaComponent,
+    BooksComponent,
+    NewBookComponent,
+    AutoresComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,8 +48,14 @@ import { SeguridadService } from './seguridad/seguridad.service';
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
+    HttpClientModule,
   ],
-  providers: [LibrosService, SeguridadService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: SeguridadInterceptor, multi: true },
+    LibrosService,
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
+  ],
   bootstrap: [AppComponent],
+  entryComponents: [NewBookComponent],
 })
 export class AppModule {}

@@ -14,14 +14,14 @@ export class RegistrarComponent implements OnInit {
 
   registrarUsuario(usuario: NgForm) {
     console.log(usuario)
-    this.seguridadService.registrarUusario({
+    this.seguridadService.registrarUsuario({
       email:usuario.value.email,
       nombre:usuario.value.nombre,
       password:usuario.value.password,
       username:usuario.value.username,
-      apellidos:usuario.value.apellido,
+      apellido:usuario.value.apellido,
       usuarioId:'',
-
+      token:''
     })
   }
 }
