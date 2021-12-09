@@ -6,8 +6,8 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
 import { Subscription } from 'rxjs';
-import { Autor } from '../autores/autor.model';
-import { AutoresService } from '../autores/autores.service';
+import { Autor } from '../autors/autor.model';
+import { AutoresService } from '../autors/autors.service';
 import { BooksService } from '../books/books.service';
 
 @Component({

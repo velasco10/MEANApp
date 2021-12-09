@@ -1,11 +1,11 @@
 export interface Books {
   id: string;
-  titulo: string;
-  descripcion: string;
-  precio: number;
-  fechaPublicacion?: Date;
+  title: string;
+  description: string;
+  price: number;
+  publicationDate?: Date;
   autor: {
     id:string,
-    nombreCompleto:string
+    completeName:string
   };
 }
