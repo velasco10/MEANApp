@@ -5,9 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { PaginationBooks } from './pagination-books.model';
 import { Injectable } from '@angular/core';
 
-
 @Injectable({
-  providedIn:'root'
+  providedIn: 'root',
 })
 export class BooksService {
   baseUrl = environment.baseUrl;
@@ -24,7 +23,7 @@ export class BooksService {
     sort: string,
     sortDirection: string,
     filterValue: any
-  ): void{
+  ): void {
     const request = {
       pageSize: libroPorPagina,
       page: paginaActual,
@@ -41,18 +40,16 @@ export class BooksService {
   }
 
   addBook(book: Books) {
-    this.http.post(this.baseUrl + 'api/libro', book).subscribe((response)=>{
+    this.http.post(this.baseUrl + 'api/libro', book).subscribe((response) => {
       this.bookSubject.next(book);
-    })
-
+    });
   }
 
-  addListener(){
-
+  addListener(): any {
     return this.bookSubject.asObservable();
   }
 
-  getListener(): any{
+  getListener(): any {
     return this.bookPaginationSubject.asObservable();
   }
 }

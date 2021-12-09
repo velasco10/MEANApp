@@ -10,12 +10,6 @@ import { Injectable } from '@angular/core';
 export class AutoresService {
   baseUrl = environment.baseUrl;
   private autoresLista: Autor[] = [];
-  /*private autoresLista: Autor[]= [
-    {autorId:1,nombre:'Daniel', apellido:"velasco", gradoAcademico:"Data Engineer"},
-    {autorId:2,nombre:'Yuri', apellido:"Frezzato", gradoAcademico:"sys admin"},
-    {autorId:3,nombre:'Miguel', apellido:"Vadillo", gradoAcademico:"Enfermero"},
-    {autorId:4,nombre:'Sergio', apellido:"Vinagre", gradoAcademico:"Ingeniero Quimico"},
-  ]*/
 
   private autoresSubject = new Subject<Autor[]>();
 

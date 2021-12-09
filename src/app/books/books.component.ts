@@ -66,24 +66,24 @@ export class BooksComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
-  filtrar(filtro: Event) {
-    // clearTimeout(this.timeout);
-    // var $this = this;
-    // this.timeout = setTimeout(function () {
-    //   // if (event.keyCode != 13) {
-    //   //   const filterValueLocal = {
-    //   //     propiedad: 'titulo',
-    //   //     valor: (filtro as HTMLButtonElement).value,
-    //   //   };
-    //     $this.booksService.getBooks(
-    //       $this.librosPorPagina,
-    //       $this.paginaActual,
-    //       $this.sort,
-    //       $this.sortDirection,
-    //       // filterValueLocal
-    //     );
-    //   }
-    // }, 1000);
+  filtrar(filtro: any): void {
+    clearTimeout(this.timeout);
+    var $this = this;
+    this.timeout = setTimeout(function () {
+      if (filtro.keyCode != 13) {
+        const filterValueLocal = {
+          propiedad: 'titulo',
+          valor: filtro.target.value,
+        };
+        $this.booksService.getBooks(
+          $this.librosPorPagina,
+          $this.paginaActual,
+          $this.sort,
+          $this.sortDirection,
+          filterValueLocal
+        );
+      }
+    }, 1000);
   }
 
   abrirDialog() {
