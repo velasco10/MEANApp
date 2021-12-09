@@ -3,25 +3,25 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { Autor } from './autor.model';
-import { AutoresService } from './autores.service';
+import { AutorsService } from './autors.service';
 
 @Component({
-  selector: 'app-autores',
-  templateUrl: './autores.component.html',
-  styleUrls: ['./autores.component.css']
+  selector: 'app-autors',
+  templateUrl: './autors.component.html',
+  styleUrls: ['./autors.component.css']
 })
-export class AutoresComponent implements OnInit, OnDestroy {
+export class AutorsComponent implements OnInit, OnDestroy {
 
-  desplegarColumnas = ['nombre', 'apellido', 'gradoAcademico'];
+  desployColumns = ['name', 'surname', 'academyGrade'];
   dataSource = new MatTableDataSource<Autor>()
 
   private autorSubscription!: Subscription;
 
-  constructor(private autoresService: AutoresService) { }
+  constructor(private autorsService: AutorsService) { }
 
   ngOnInit(): void {
-    this.autoresService.getAutors();
-    this.autorSubscription= this.autoresService.getListener()
+    this.autorsService.getAutors();
+    this.autorSubscription= this.autorsService.getListener()
     .subscribe((autores:Autor[])=>{
       this.dataSource.data = autores
     })

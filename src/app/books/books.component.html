@@ -2,33 +2,31 @@
   <mat-form-field fxFlex="60%">
     <input matInput type="text"  placeholder="filtre por nombre">
   </mat-form-field>
-
 </div>
-
 <mat-table [dataSource]="dataSource" matSort (matSortChange)="sortColumns($event)">
-  <ng-container matColumnDef="titulo">
+  <ng-container matColumnDef="title">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Titulo</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{ element.titulo }}</mat-cell>
+    <mat-cell *matCellDef="let element">{{ element.title }}</mat-cell>
   </ng-container>
-  <ng-container matColumnDef="descripcion">
+  <ng-container matColumnDef="description">
     <mat-header-cell *matHeaderCellDef mat-sort-header>descripcion</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{ element.descripcion }}</mat-cell>
+    <mat-cell *matCellDef="let element">{{ element.description }}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="autor">
     <mat-header-cell *matHeaderCellDef mat-sort-header>autor</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{ element.autor.nombreCompleto }}</mat-cell>
+    <mat-cell *matCellDef="let element">{{ element.autor.completeName }}</mat-cell>
   </ng-container>
-  <ng-container matColumnDef="precio">
+  <ng-container matColumnDef="price">
     <mat-header-cell *matHeaderCellDef mat-sort-header>precio</mat-header-cell>
-    <mat-cell *matCellDef="let element">{{ element.precio }}</mat-cell>
+    <mat-cell *matCellDef="let element">{{ element.price }}</mat-cell>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="desplegarColumnas"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: desplegarColumnas"></mat-row>
+  <mat-header-row *matHeaderRowDef="desployColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: desployColumns"></mat-row>
 </mat-table>
 
-<mat-paginator (page)="eventoPaginador($event)" #paginacion [pageSize]="librosPorPagina" [pageSizeOptions]="paginaCombo" [length]="totalLibros"></mat-paginator>
+<mat-paginator (page)="eventPaginator($event)" #pagination [pageSize]="booksByPage" [pageSizeOptions]="pageCombo" [length]="totalBooks"></mat-paginator>
 
-<button mat-fab id="boton-agregar" color="warn" (click)="abrirDialog()">
+<button mat-fab id="botton-agregate" color="warn" (click)="openDialog()">
   <mat-icon>add</mat-icon>
 </button>

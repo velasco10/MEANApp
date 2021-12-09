@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 })
 export class BooksService {
   baseUrl = environment.baseUrl;
-  private booksLista: Books[] = [];
+  private booksList: Books[] = [];
 
   bookSubject = new Subject();
   bookPagination!: PaginationBooks;

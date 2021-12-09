@@ -7,23 +7,23 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class AutoresService {
+export class AutorsService {
   baseUrl = environment.baseUrl;
-  private autoresLista: Autor[] = [];
+  private autorsList: Autor[] = [];
 
-  private autoresSubject = new Subject<Autor[]>();
+  private autorsSubject = new Subject<Autor[]>();
 
   constructor(private http: HttpClient) {}
   getAutors() {
     this.http
       .get<Autor[]>(this.baseUrl + 'api/libreriaAutor')
       .subscribe((data) => {
-        this.autoresLista = data;
-        this.autoresSubject.next([...this.autoresLista]);
+        this.autorsList = data;
+        this.autorsSubject.next([...this.autorsList]);
       });
   }
 
   getListener() {
-    return this.autoresSubject.asObservable();
+    return this.autorsSubject.asObservable();
   }
 }
