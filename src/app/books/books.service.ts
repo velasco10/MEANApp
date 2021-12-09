@@ -18,15 +18,15 @@ export class BooksService {
   constructor(private http: HttpClient) {}
 
   getBooks(
-    libroPorPagina: number,
-    paginaActual: number,
+    booksByPage: number,
+    actualPage: number,
     sort: string,
     sortDirection: string,
     filterValue: any
   ): void {
     const request = {
-      pageSize: libroPorPagina,
-      page: paginaActual,
+      pageSize: booksByPage,
+      page: actualPage,
       sort,
       sortDirection,
       filterValue,
