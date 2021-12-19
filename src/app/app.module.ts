@@ -17,6 +17,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BarraComponent } from './navegacion/barra/barra.component';
 import { MenuListaComponent } from './navegacion/menu-lista/menu-lista.component';
 import { SeguridadService } from './seguridad/seguridad.service';
+import { ChatComponent } from './chat/chat.component';
 import { BooksComponent } from './books/books.component';
 import { BooksService } from './books/books.service';
 import { NewBookComponent } from './new-book/new-book.component';
@@ -37,6 +38,7 @@ import { SeguridadInterceptor } from './seguridad/seguridad-interceptor';
     LoginComponent,
     BarraComponent,
     MenuListaComponent,
+    ChatComponent,
     BooksComponent,
     NewBookComponent,
     AutoresComponent,

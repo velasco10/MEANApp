@@ -7,6 +7,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatListModule} from '@angular/material/list';
 import { MatCardModule} from '@angular/material/card';
+import {MatBadgeModule} from '@angular/material/badge';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -14,8 +15,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core'
-
-
 
 @NgModule({
   imports: [
@@ -27,6 +26,7 @@ import {MatNativeDateModule} from '@angular/material/core'
     MatToolbarModule,
     MatListModule,
     MatCardModule,
+    MatBadgeModule,
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
@@ -44,6 +44,7 @@ import {MatNativeDateModule} from '@angular/material/core'
     MatToolbarModule,
     MatListModule,
     MatCardModule,
+    MatBadgeModule
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,

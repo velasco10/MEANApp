@@ -20,6 +20,10 @@
     <mat-icon>login</mat-icon>
     <span class="navegacion-list-label">Ingresar</span>
   </a>
+  <a mat-list-item routerLink="/chat" *ngIf="estadoUsuario">
+    <mat-icon>chat_bubble_outline</mat-icon>
+    <span class="navegacion-list-label">Chat</span>
+  </a>
   <mat-list-item>
     <button mat-icon-button (click)="terminarSesionMenu()" *ngIf="estadoUsuario">
       <mat-icon>eject</mat-icon>
