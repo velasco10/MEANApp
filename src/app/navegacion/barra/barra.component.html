@@ -5,11 +5,22 @@
   <span>Libro Market</span>
 
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
-    <ul fxLayout="row" fxLayoutGap="10px" class="navegacion-menu">
-      <li *ngIf="!estadoUsuario"><a routerLink="/registrar">Registrar</a></li>
-      <li *ngIf="!estadoUsuario"><a routerLink="/login">Login</a></li>
-      <li *ngIf="estadoUsuario"><a routerLink="/">Home</a></li>
-      <li (click)="terminarSesion()" *ngIf="estadoUsuario"><a routerLink="/">Salir</a></li>
+    <ul fxLayout="row" fxLayoutGap="25px" class="navegacion-menu">
+      <li *ngIf="!estadoUsuario"><a routerLink="/registrar">
+          <mat-icon>how_to_reg</mat-icon>
+        </a></li>
+      <li *ngIf="!estadoUsuario"><a routerLink="/login">
+          <mat-icon>login</mat-icon>
+        </a></li>
+      <li *ngIf="estadoUsuario"><a routerLink="/">
+          <mat-icon>home</mat-icon>
+        </a></li>
+      <li *ngIf="estadoUsuario"><a routerLink="/chat">
+          <mat-icon matBadge="1" matBadgeColor="warn">chat_bubble_outline</mat-icon>
+        </a></li>
+      <li (click)="terminarSesion()" *ngIf="estadoUsuario"><a routerLink="/">
+          <mat-icon>eject</mat-icon>
+        </a></li>
     </ul>
   </div>
 </mat-toolbar>

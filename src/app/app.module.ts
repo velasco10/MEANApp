@@ -17,6 +17,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BarraComponent } from './navegacion/barra/barra.component';
 import { MenuListaComponent } from './navegacion/menu-lista/menu-lista.component';
 import { SeguridadService } from './seguridad/seguridad.service';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SeguridadService } from './seguridad/seguridad.service';
     LoginComponent,
     BarraComponent,
     MenuListaComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
