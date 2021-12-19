@@ -3,6 +3,15 @@
     <mat-icon>home</mat-icon>
     <span class="navegacion-list-label">Home</span>
   </a>
+  <a mat-list-item routerLink="/books" (click)="onCerrarLibro()" *ngIf="estadoUsuario">
+    <mat-icon>import_contacts</mat-icon>
+    <span class="navegacion-list-label">Libros</span>
+  </a>
+
+  <a mat-list-item routerLink="/autores" (click)="onCerrarLibro()" *ngIf="estadoUsuario">
+    <mat-icon>supervisor_account</mat-icon>
+    <span class="navegacion-list-label">Autores</span>
+  </a>
   <a mat-list-item routerLink="/registrar" (click)="onCerrarLibro()" *ngIf="!estadoUsuario">
     <mat-icon>how_to_reg</mat-icon>
     <span class="navegacion-list-label">Registrar</span>
