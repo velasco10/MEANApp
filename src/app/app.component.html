@@ -1,10 +1,10 @@
 <!--Prueba git conflictos-->
 <mat-sidenav-container>
   <mat-sidenav #menu role="navigation">
-    <app-menu-lista (menuToggle)="menu.close()"></app-menu-lista>
+    <app-sideMenu (menuToggle)="menu.close()"></app-sideMenu>
   </mat-sidenav>
   <mat-sidenav-content>
-    <app-barra (menuToggle)="menu.toggle()"></app-barra>
+    <app-topMenu (menuToggle)="menu.toggle()"></app-topMenu>
     <main>
       <router-outlet></router-outlet>
     </main>

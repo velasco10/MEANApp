@@ -3,7 +3,7 @@
     fxLayout="column"
     fxLayoutAlign="center center"
     #form="ngForm"
-    (ngSubmit)="registrarUsuario(form)"
+    (ngSubmit)="userRegister(form)"
     fxLayoutGap="10px"
   >
     <mat-form-field>
@@ -11,7 +11,7 @@
       <input
         type="text"
         ngModel
-        name="nombre"
+        name="name"
         required
         placeholder="Ingrese Nombre"
         matInput
@@ -23,7 +23,7 @@
       <input
         type="text"
         ngModel
-        name="apellido"
+        name="surname"
         required
         placeholder="Ingrese Apellido"
         matInput

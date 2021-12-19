@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SeguridadService } from './seguridad/seguridad.service';
+import { SecurityService } from './seguridad/security.service';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +8,9 @@ import { SeguridadService } from './seguridad/seguridad.service';
 })
 export class AppComponent implements OnInit {
   abrirMenu = false;
-  constructor(private seguridadService: SeguridadService) {}
+  constructor(private securityService: SecurityService) {}
 
   ngOnInit(): void {
-    this.seguridadService.loadUser();
+    this.securityService.loadUser();
   }
 }

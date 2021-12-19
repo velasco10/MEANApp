@@ -8,12 +8,12 @@ a:active {
   color: #dbcde6;
 }
 
-.navegacion-list-label {
+.navegation-list-label {
   display: inline-block;
   padding-left: 6px;
 }
 
-.navegacion-menu{
+.navegation-menu{
   list-style: none;
   padding: 0;
   margin: 0;

@@ -5,17 +5,17 @@ import {
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
-import { SeguridadService } from './seguridad.service';
+import { SecurityService } from './security.service';
 
 @Injectable()
 export class SeguridadRouter implements CanActivate{
   constructor(
-    private seguridadService: SeguridadService,
+    private securityService: SecurityService,
     private router: Router
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.seguridadService.onSesion()) {
+    if (this.securityService.onSession()) {
       return true;
     } else {
       this.router.navigate(['/login']);

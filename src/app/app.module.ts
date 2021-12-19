@@ -5,43 +5,43 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsuarioComponent } from './usuario.component';
 import { FormsModule } from '@angular/forms';
-import { LibrosComponent } from './libros/libros.component';
-import { LibroComponent } from './book/book.component';
-import { LibrosService } from './services/libros.services';
-import { InicioComponent } from './principal/principal.component';
+import { BooksListComponent } from './booksList/booksList.component';
+import { BookComponent } from './book/book.component';
+import { BooksListService } from './services/booksList.services';
+import { PrincipalComponent } from './principal/principal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
-import { RegistrarComponent } from './seguridad/registrar/registrar.component';
+import { RegisterComponent } from './seguridad/register/register.component';
 import { LoginComponent } from './seguridad/login/login.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { BarraComponent } from './navegacion/barra/barra.component';
-import { MenuListaComponent } from './navegacion/menu-lista/menu-lista.component';
-import { SeguridadService } from './seguridad/seguridad.service';
-import { ChatComponent } from './chat/chat.component';
+import { TopMenuComponent } from './navegacion/topMenu/topMenu.component';
+import { SideMenuComponent } from './navegacion/sideMenu/sideMenu.component';
+import { SecurityService } from './seguridad/security.service';
 import { BooksComponent } from './books/books.component';
 import { BooksService } from './books/books.service';
 import { NewBookComponent } from './new-book/new-book.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
-import { AutoresComponent } from './autors/autors.component';
-import { AutoresService } from './autors/autors.service';
+import { AutorsComponent } from './autors/autors.component';
+import { AutorsService } from './autors/autors.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { SeguridadInterceptor } from './seguridad/seguridad-interceptor';
+import { SecurityInterceptor } from './seguridad/security-interceptor';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuarioComponent,
-    LibrosComponent,
-    LibroComponent,
-    InicioComponent,
-    RegistrarComponent,
+    BooksListComponent,
+    BookComponent,
+    PrincipalComponent,
+    RegisterComponent,
     LoginComponent,
-    BarraComponent,
-    MenuListaComponent,
-    ChatComponent,
+    TopMenuComponent,
+    SideMenuComponent,
     BooksComponent,
     NewBookComponent,
-    AutoresComponent,
+    AutorsComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,8 +53,8 @@ import { SeguridadInterceptor } from './seguridad/seguridad-interceptor';
     HttpClientModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: SeguridadInterceptor, multi: true },
-    LibrosService,
+    { provide: HTTP_INTERCEPTORS, useClass: SecurityInterceptor, multi: true },
+    BooksListService,
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
   ],
   bootstrap: [AppComponent],

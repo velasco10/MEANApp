@@ -1,0 +1,33 @@
+<mat-nav-list>
+  <a mat-list-item routerLink="/" (click)="onCloseMenu()" *ngIf="userState">
+    <mat-icon>home</mat-icon>
+    <span class="navegation-list-label">Home</span>
+  </a>
+  <a mat-list-item routerLink="/books" (click)="onCloseMenu()" *ngIf="userState">
+    <mat-icon>import_contacts</mat-icon>
+    <span class="navegation-list-label">Libros</span>
+  </a>
+
+  <a mat-list-item routerLink="/autors" (click)="onCloseMenu()" *ngIf="userState">
+    <mat-icon>supervisor_account</mat-icon>
+    <span class="navegation-list-label">Autores</span>
+  </a>
+  <a mat-list-item routerLink="/register" (click)="onCloseMenu()" *ngIf="!userState">
+    <mat-icon>how_to_reg</mat-icon>
+    <span class="navegation-list-label">Registrar</span>
+  </a>
+  <a mat-list-item routerLink="/login" (click)="onCloseMenu()"  *ngIf="!userState">
+    <mat-icon>login</mat-icon>
+    <span class="navegation-list-label">Ingresar</span>
+  </a>
+  <a mat-list-item routerLink="/chat" (click)="onCloseMenu()" *ngIf="userState">
+    <mat-icon>chat_bubble_outline</mat-icon>
+    <span class="navegation-list-label">Chat</span>
+  </a>
+  <mat-list-item>
+    <button mat-icon-button (click)="closeSessionMenu()" *ngIf="userState">
+      <mat-icon>eject</mat-icon>
+      <span class="navegation-list-label">Salir</span>
+    </button>
+  </mat-list-item>
+</mat-nav-list>

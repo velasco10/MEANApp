@@ -1,5 +1,5 @@
 import { Subject } from 'rxjs';
-import { Usuario } from './usuario.model';
+import { User } from './user.model';
 import { LoginData } from './login-data.model';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
@@ -9,12 +9,12 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class SeguridadService {
+export class SecurityService {
   private token!: string;
   baseUrl = environment.baseUrl;
 
-  seguridadCambio = new Subject<boolean>();
-  private usuario: Usuario | undefined;
+  securityChange = new Subject<boolean>();
+  private user: User | undefined;
 
   loadUser(): void {
     const tokenBrowser = localStorage.getItem('token');
@@ -23,21 +23,21 @@ export class SeguridadService {
     }
 
     this.token = tokenBrowser;
-    this.seguridadCambio.next(true);
+    this.securityChange.next(true);
 
-    this.http.get<Usuario>(this.baseUrl + 'usuario').subscribe((response) => {
+    this.http.get<User>(this.baseUrl + 'user').subscribe((response) => {
       console.log('login respuesta', response);
       this.token = response.token;
-      this.usuario = {
+      this.user = {
         email: response.email,
-        nombre: response.nombre,
-        apellido: response.apellido,
+        name: response.name,
+        surname: response.surname,
         token: response.token,
         password: '',
         username: response.username,
-        usuarioId: response.usuarioId,
+        userId: response.userId,
       };
-      this.seguridadCambio.next(true);
+      this.securityChange.next(true);
       localStorage.setItem('token', response.token);
     });
   }
@@ -47,71 +47,59 @@ export class SeguridadService {
   }
   constructor(private router: Router, private http: HttpClient) {}
 
-  registrarUsuario(usr: Usuario): void {
+  userRegister(usr: User): void {
     this.http
-      .post<Usuario>(this.baseUrl + 'usuario/registrar', usr)
+      .post<User>(this.baseUrl + 'user/registrar', usr)
       .subscribe((response) => {
         this.token = response.token;
-        this.usuario = {
+        this.user = {
           email: response.email,
-          nombre: response.nombre,
-          apellido: response.apellido,
+          name: response.name,
+          surname: response.surname,
           token: response.token,
           password: '',
           username: response.username,
-          usuarioId: response.usuarioId,
+          userId: response.userId,
         };
-        this.seguridadCambio.next(true);
+        this.securityChange.next(true);
         localStorage.setItem('token', response.token);
         this.router.navigate(['/']);
       });
-    // this.usuario = {
-    //   email: usr.email,
-    //   usuarioId: Math.round(Math.random() * 10000).toString(),
-    //   nombre: usr.nombre,
-    //   apellidos: usr.apellidos,
-    //   username: usr.username,
-    //   password: '',
-    //   token: '',
-    // };
-
-    // this.seguridadCambio.next(true);
-    // this.router.navigate(['/']);
   }
 
   login(loginData: LoginData): void {
     this.http
-      .post<Usuario>(this.baseUrl + 'usuario/login', loginData)
+      .post<User>(this.baseUrl + 'user/login', loginData)
       .subscribe((response) => {
         console.log('login respuesta', response);
         this.token = response.token;
-        this.usuario = {
+        this.user = {
           email: response.email,
-          nombre: response.nombre,
-          apellido: response.apellido,
+          name: response.name,
+          surname: response.surname,
           token: response.token,
           password: '',
           username: response.username,
-          usuarioId: response.usuarioId,
+          userId: response.userId,
         };
-        this.seguridadCambio.next(true);
+        this.securityChange.next(true);
         localStorage.setItem('token', response.token);
         this.router.navigate(['/']);
       });
   }
 
-  saliSesion() {
-    this.usuario = undefined;
-    this.seguridadCambio.next(false);
+  closeSession() {
+    this.user = undefined;
+    this.securityChange.next(false);
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
 
-  obtenerUsuario() {
-    return { ...this.usuario };
+  getUser() {
+    return { ...this.user };
   }
 
-  onSesion() {
+  onSession() {
     return this.token != null;
   }
 }

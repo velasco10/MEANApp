@@ -14,7 +14,7 @@
               type="text"
               matInput
               placeholder="Nombre del Libro"
-              name="titulo"
+              name="title"
               ngModel
               required
             />
@@ -38,7 +38,7 @@
               type="text"
               matInput
               placeholder="Precio del Libro"
-              name="precio"
+              name="price"
               ngModel
               required
             />
@@ -51,7 +51,7 @@
               name="autor"
               (selectionChange)="selected($event)"
             >
-            <mat-option *ngFor="let autor of autores" [value]="autor._id">{{autor.nombre + " " + autor.apellido}}</mat-option>
+            <mat-option *ngFor="let autor of autors" [value]="autor._id">{{autor.name + " " + autor.surname}}</mat-option>
               </mat-select>
           </mat-form-field>
           <mat-form-field>
@@ -59,8 +59,8 @@
               matInput
               placeholder="Seleccione la fecha publicacion"
               [matDatepicker]="picker"
-              name="fechaPublicacion"
-              [(ngModel)]="fechaPublicacion"
+              name="publicationDate"
+              [(ngModel)]="publicationDate"
             />
             <mat-datepicker-toggle
               matSuffix

@@ -44,7 +44,7 @@ import {MatNativeDateModule} from '@angular/material/core'
     MatToolbarModule,
     MatListModule,
     MatCardModule,
-    MatBadgeModule
+    MatBadgeModule,
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,

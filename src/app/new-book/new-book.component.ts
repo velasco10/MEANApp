@@ -7,7 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
 import { Subscription } from 'rxjs';
 import { Autor } from '../autors/autor.model';
-import { AutoresService } from '../autors/autors.service';
+import { AutorsService } from '../autors/autors.service';
 import { BooksService } from '../books/books.service';
 
 @Component({
@@ -18,8 +18,8 @@ import { BooksService } from '../books/books.service';
 export class NewBookComponent implements OnInit, OnDestroy {
   selectAutor!: string;
   selectAutorLabel!: string;
-  fechaPublicacion!: string;
-  autores: Autor[] = [];
+  publicationDate!: string;
+  autors: Autor[] = [];
   autorSubscription!: Subscription;
 
   @ViewChild(MatDatepicker) picker!: MatDatepicker<Date>;
@@ -27,15 +27,15 @@ export class NewBookComponent implements OnInit, OnDestroy {
   constructor(
     private bookService: BooksService,
     private dialogRef: MatDialog,
-    private autoresService: AutoresService
+    private autorsService: AutorsService
   ) {}
 
   ngOnInit(): void {
-    this.autoresService.getAutors();
-    this.autorSubscription = this.autoresService
+    this.autorsService.getAutors();
+    this.autorSubscription = this.autorsService
       .getListener()
       .subscribe((autores: Autor[]) => {
-        this.autores = autores;
+        this.autors = autores;
       });
   }
 
@@ -47,19 +47,19 @@ export class NewBookComponent implements OnInit, OnDestroy {
     if (form.valid) {
       const autorRequest = {
         id: this.selectAutor,
-        nombreCompleto: this.selectAutorLabel,
+        completeName: this.selectAutorLabel,
       };
 
-      const libroRequest = {
-        id: null,
-        descripcion: form.value.descripcion,
-        titulo: form.value.titulo,
+      const bookRequest = {
+        id: "",
+        description: form.value.description,
+        title: form.value.title,
         autor: autorRequest,
-        precio: parseInt(form.value.precio),
-        fechaPublicacion: new Date(this.fechaPublicacion),
+        price: parseInt(form.value.price),
+        publicationDate: new Date(this.publicationDate),
       };
 
-      this.bookService.addBook(libroRequest);
+      this.bookService.addBook(bookRequest);
       this.autorSubscription = this.bookService.addListener().subscribe(() => {
         this.dialogRef.closeAll();
       });
