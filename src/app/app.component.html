@@ -6,6 +6,11 @@
   <mat-sidenav-content>
     <app-topMenu (menuToggle)="menu.toggle()"></app-topMenu>
     <main>
+      <div class="chat-button" *ngIf="userState">
+        <button mat-fab routerLink="/chat" color="basic" >
+          <mat-icon matBadge="1" matBadgeColor="warn">chat_bubble_outline</mat-icon>
+        </button>
+      </div>
       <router-outlet></router-outlet>
     </main>
   </mat-sidenav-content>

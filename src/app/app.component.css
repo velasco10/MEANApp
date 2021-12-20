@@ -7,3 +7,8 @@ mat-sidenav {
 mat-sidenav {
   width: 250px;
 }
+
+.chat-button {
+  float: right;
+  padding: 10px;
+}

@@ -6,21 +6,33 @@
 
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
     <ul fxLayout="row" fxLayoutGap="25px" class="navegation-menu">
-      <li *ngIf="!userState"><a routerLink="/register">
+      <li *ngIf="!userState">
+        <a routerLink="/register">
           <mat-icon>how_to_reg</mat-icon>
-        </a></li>
-      <li *ngIf="!userState"><a routerLink="/login">
+        </a>
+      </li>
+      <li *ngIf="!userState">
+        <a routerLink="/login">
           <mat-icon>login</mat-icon>
-        </a></li>
-      <li *ngIf="userState"><a routerLink="/">
+        </a>
+      </li>
+      <li *ngIf="userState">
+        <a routerLink="/">
           <mat-icon>home</mat-icon>
-        </a></li>
-      <li *ngIf="userState"><a routerLink="/chat">
-          <mat-icon matBadge="1" matBadgeColor="warn">chat_bubble_outline</mat-icon>
-        </a></li>
-      <li (click)="closeSession()" *ngIf="userState"><a routerLink="/">
+        </a>
+      </li>
+      <!--<li *ngIf="userState">
+        <a routerLink="/chat">
+          <mat-icon matBadge="1" matBadgeColor="warn"
+            >chat_bubble_outline</mat-icon
+          >
+        </a>
+      </li>-->
+      <li (click)="closeSession()" *ngIf="userState">
+        <a routerLink="/">
           <mat-icon>eject</mat-icon>
-        </a></li>
+        </a>
+      </li>
     </ul>
   </div>
 </mat-toolbar>
