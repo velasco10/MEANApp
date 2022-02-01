@@ -8,10 +8,13 @@ import { SecurityService } from '../security.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+public title!: string;
+
 
   constructor(private securityService:SecurityService) { }
 
   ngOnInit(): void {
+    this.title = "Lights login"
   }
 
   loginUser(form:NgForm){
